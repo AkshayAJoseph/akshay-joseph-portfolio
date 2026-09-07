@@ -2,34 +2,14 @@ import {
   MotionLink,
   Parallax,
   Reveal,
-  Stagger,
-  StaggerItem,
   WordReveal
 } from "../components/motion";
+import { WorkSection } from "../components/work-section";
 
 /* ═══════════════════════════ DATA ═══════════════════════════ */
 
 const techStack = ["React", "Node.js", "FastAPI", "MongoDB", "Go", "Python"];
 
-const projects = [
-  {
-    name: "Nakshatra '26",
-    metric: "150k daily requests · 782k transactions",
-    description:
-      "High-throughput event platform engineered for reliability at scale."
-  },
-  {
-    name: "Eye Wave",
-    metric: "Patent: IN202641026386",
-    description:
-      "Gaze-controlled accessibility, turning intent into an expressive interface."
-  },
-  {
-    name: "Future Project",
-    metric: "Awaiting next transmission",
-    description: "A blank canvas for the next ambitious system."
-  }
-];
 
 const experience = [
   {
@@ -48,73 +28,7 @@ const achievements = [
   }
 ];
 
-/* ═════════════════════ COMMAND CARD (Win95) ═════════════════ */
 
-function CommandCard({
-  name,
-  metric,
-  description,
-  index
-}: (typeof projects)[number] & { index: number }) {
-  return (
-    <StaggerItem className="group">
-      <article className="overflow-hidden border border-zinc-800 bg-black text-zinc-100 shadow-[12px_12px_0_#e4e4e7] transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[16px_16px_0_#e4e4e7]">
-        {/* ── Windows 95-style title bar ── */}
-        <div className="flex items-center justify-between border-b border-zinc-700 bg-[#000080] px-3 py-2 font-mono text-[11px] text-white">
-          <span className="flex items-center gap-2">
-            <span className="inline-block h-3.5 w-3.5 bg-zinc-800 text-center text-[9px] font-bold leading-[14px]">
-              ⌂
-            </span>
-            <span>
-              project_{String(index + 1).padStart(2, "0")}.exe
-            </span>
-          </span>
-          <span className="flex gap-1">
-            <button
-              className="flex h-[18px] w-[18px] items-center justify-center border border-zinc-600 bg-zinc-300 text-[10px] font-bold leading-none text-black"
-              aria-label="Minimize"
-              tabIndex={-1}
-            >
-              ─
-            </button>
-            <button
-              className="flex h-[18px] w-[18px] items-center justify-center border border-zinc-600 bg-zinc-300 text-[10px] font-bold leading-none text-black"
-              aria-label="Maximize"
-              tabIndex={-1}
-            >
-              □
-            </button>
-            <button
-              className="flex h-[18px] w-[18px] items-center justify-center border border-zinc-600 bg-zinc-300 text-[10px] font-bold leading-none text-black"
-              aria-label="Close"
-              tabIndex={-1}
-            >
-              ×
-            </button>
-          </span>
-        </div>
-
-        {/* ── Terminal body ── */}
-        <div className="min-h-[255px] p-6 font-mono">
-          <p className="mb-10 text-xs text-emerald-400">
-            C:\AKSHAY\WORK&gt; ./launch{" "}
-            {name.toLowerCase().replaceAll(" ", "-")}
-          </p>
-          <h3 className="mb-3 text-xl font-bold tracking-tight text-white">
-            {name}
-          </h3>
-          <p className="mb-4 text-xs leading-6 text-amber-300">{metric}</p>
-          <p className="max-w-xs text-sm leading-6 text-zinc-400">
-            {description}
-          </p>
-          <p className="mt-8 text-xs text-zinc-600">
-            status: {index === 2 ? "in-progress" : "deployed"}
-          </p>
-        </div>
-      </article>
-    </StaggerItem>
-  );
-}
 
 /* ════════════════════ TIMELINE ITEM ════════════════════════ */
 
@@ -167,6 +81,14 @@ export default function Home() {
             >
               Achievements
             </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-black"
+            >
+              Resume
+            </a>
           </div>
           <MotionLink
             href="#contact"
@@ -209,6 +131,12 @@ export default function Home() {
                     className="rounded-full border border-zinc-300 px-5 py-3 text-sm font-medium"
                   >
                     More about me
+                  </MotionLink>
+                  <MotionLink
+                    href="/resume.pdf"
+                    className="rounded-full border border-zinc-300 px-5 py-3 text-sm font-medium"
+                  >
+                    Resume ↓
                   </MotionLink>
                 </div>
               </div>
@@ -263,32 +191,7 @@ export default function Home() {
       </section>
 
       {/* ──────────────────── FEATURED WORK ──────────────── */}
-      <section
-        id="work"
-        className="bg-zinc-950 px-6 py-28 text-white lg:px-10 lg:py-40"
-      >
-        <Reveal className="mx-auto max-w-7xl">
-          <div className="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
-                02 / Selected work
-              </p>
-              <h2 className="text-4xl font-medium tracking-[-0.05em] sm:text-6xl">
-                Built for impact.
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-6 text-zinc-500">
-              Systems that stay calm under pressure, with interfaces that invite
-              people in.
-            </p>
-          </div>
-        </Reveal>
-        <Stagger className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <CommandCard key={project.name} {...project} index={index} />
-          ))}
-        </Stagger>
-      </section>
+      <WorkSection />
 
       {/* ──────────────────── EXPERIENCE ─────────────────── */}
       <section
