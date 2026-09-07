@@ -327,14 +327,15 @@ export function WorkSection() {
         </div>
       </Reveal>
 
-      <Stagger className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <Stagger className="mx-auto flex snap-x snap-mandatory gap-6 overflow-x-auto pb-12 hide-scrollbar w-full sm:gap-8">
         {projects.map((project, index) => (
-          <CommandCard
-            key={project.name}
-            project={project}
-            index={index}
-            onExpand={() => setActiveIndex(index)}
-          />
+          <div key={project.name} className="shrink-0 snap-center w-[85vw] sm:w-[400px]">
+            <CommandCard
+              project={project}
+              index={index}
+              onExpand={() => setActiveIndex(index)}
+            />
+          </div>
         ))}
       </Stagger>
 

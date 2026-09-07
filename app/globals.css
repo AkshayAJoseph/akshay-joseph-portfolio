@@ -32,6 +32,15 @@ body {
 .marquee-track:hover { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* ---- Scrollbars ---- */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ---- CRT flash overlay on retro toggle ---- */
 @keyframes crt-flash {
   0%   { opacity: 1; }
@@ -88,3 +97,16 @@ html[data-retro="true"] article {
 }
 html[data-retro="true"] .retro-grid { background-image: none; }
 html[data-retro="true"] ::selection { background: #fff; color: #000080; }
+
+html[data-retro="true"] .retro-photo {
+  filter: grayscale(100%) contrast(200%) brightness(0.9) !important;
+  image-rendering: pixelated !important;
+}
+
+html[data-retro="true"] .hide-scrollbar {
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
+}
+html[data-retro="true"] .hide-scrollbar::-webkit-scrollbar {
+  display: block;
+}
