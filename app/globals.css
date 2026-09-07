@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ink: #09090b;
+  --paper: #fafafa;
+  --muted: #71717a;
+  --line: #e4e4e7;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: #18181b; color: white; }
+
+/* ---- Retro grid background ---- */
+.retro-grid {
+  background-image: linear-gradient(rgba(0, 0, 0, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, .04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ---- Marquee ---- */
+.marquee-track { animation: marquee 24s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---- CRT flash overlay on retro toggle ---- */
+@keyframes crt-flash {
+  0%   { opacity: 1; }
+  20%  { opacity: 0; }
+  40%  { opacity: 0.6; }
+  60%  { opacity: 0; }
+  80%  { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+.crt-flash {
+  animation: crt-flash 300ms linear forwards;
+  pointer-events: none;
+}
+
+/* ============================================================
+   RETRO MODE — Windows 95 aesthetic via data attribute
+   ============================================================ */
+html[data-retro="true"] {
+  color-scheme: dark;
+  --ink: #fff;
+  --paper: #008080;
+  --muted: #fff;
+  --line: #000;
+  scroll-behavior: auto;
+}
+html[data-retro="true"] body {
+  background: #008080;
+  color: #fff;
+  font-family: var(--font-retro), "Courier New", monospace;
+  image-rendering: pixelated;
+}
+html[data-retro="true"] * {
+  border-radius: 0 !important;
+  transition: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+/* Re-enable CRT flash even in retro mode */
+html[data-retro="true"] .crt-flash {
+  animation: crt-flash 300ms linear forwards !important;
+}
+html[data-retro="true"] nav,
+html[data-retro="true"] article,
+html[data-retro="true"] a {
+  border: 2px solid #000 !important;
+  box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #555 !important;
+}
+html[data-retro="true"] nav {
+  background: #c0c0c0 !important;
+  color: #000 !important;
+}
+html[data-retro="true"] article {
+  background: #000 !important;
+}
+html[data-retro="true"] .retro-grid { background-image: none; }
+html[data-retro="true"] ::selection { background: #fff; color: #000080; }
