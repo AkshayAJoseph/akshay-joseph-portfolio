@@ -124,7 +124,9 @@ export default function Home() {
 
             <Reveal delay={0.4}>
               <div className="mt-10 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-                <p className="text-lg text-zinc-500">B.Tech CSE @ Saintgits</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+                  B.Tech CSE @ Saintgits College of Engineering
+                </p>
                 <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <MotionLink
                     href="#work"
