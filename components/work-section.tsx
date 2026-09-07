@@ -207,12 +207,16 @@ function ExpandedWindow({
 
   /* Lock body scroll */
   useEffect(() => {
+    if (isMinimized) {
+      document.body.style.overflow = "";
+      return;
+    }
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, []);
+  }, [isMinimized]);
 
   const expanded = project.expanded;
   if (!expanded) return null;
@@ -275,8 +279,10 @@ function ExpandedWindow({
     </>
   );
 
-  const containerClasses = `fixed inset-0 z-50 flex items-center justify-center ${isMaximized ? "p-0" : "p-4 sm:p-8"} ${isMinimized ? "items-end pb-8" : ""}`;
-  const modalClasses = `relative z-10 flex flex-col overflow-hidden border border-zinc-700 bg-black text-zinc-100 transition-all duration-300 ${
+  const containerClasses = `fixed inset-0 z-50 flex justify-center transition-all ${
+    isMaximized ? "p-0 items-center" : isMinimized ? "items-end pb-4 pointer-events-none" : "p-4 sm:p-8 items-center"
+  }`;
+  const modalClasses = `pointer-events-auto relative z-10 flex flex-col overflow-hidden border border-zinc-700 bg-black text-zinc-100 transition-all duration-300 ${
     isMaximized
       ? "h-full w-full max-w-none shadow-none"
       : isMinimized 
@@ -289,8 +295,8 @@ function ExpandedWindow({
     return (
       <div className={containerClasses}>
         <div
-          className="absolute inset-0 bg-black/70"
-          onClick={stableClose}
+          className={`absolute inset-0 bg-black/70 ${isMinimized ? "hidden" : ""}`}
+          onClick={isMinimized ? undefined : stableClose}
         />
         <div className={modalClasses}>
           {windowContent}
@@ -303,11 +309,11 @@ function ExpandedWindow({
   return (
     <div className={containerClasses}>
       <motion.div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm ${isMinimized ? "pointer-events-none" : "pointer-events-auto"}`}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: isMinimized ? 0 : 1 }}
         exit={{ opacity: 0 }}
-        onClick={stableClose}
+        onClick={isMinimized ? undefined : stableClose}
       />
       <motion.div
         layout
