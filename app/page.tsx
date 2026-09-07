@@ -2,7 +2,8 @@ import {
   MotionLink,
   Parallax,
   Reveal,
-  WordReveal
+  WordReveal,
+  FloatingOrb
 } from "../components/motion";
 import { WorkSection } from "../components/work-section";
 
@@ -100,20 +101,24 @@ export default function Home() {
       </nav>
 
       {/* ─────────────────────── HERO ────────────────────── */}
-      <section className="relative flex min-h-screen items-center px-6 pb-20 pt-32 lg:px-10">
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-32 lg:px-10">
         <div className="retro-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" />
-        <div className="mx-auto w-full max-w-7xl">
+        <FloatingOrb />
+        <div className="mx-auto w-full max-w-7xl relative z-10">
           <Parallax className="max-w-5xl">
             <Reveal>
-              <p className="mb-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-400">
-                Hello, I&apos;m Akshay Joseph
+              <p className="mb-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
+                Akshay Joseph
               </p>
             </Reveal>
 
-            <h1 className="max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.07em] sm:text-7xl lg:text-[clamp(4rem,8vw,8.5rem)]">
-              <WordReveal text="AI & Full-Stack Developer" />
-              <span className="text-zinc-300"> | </span>
-              <WordReveal text="Architecting Scalable Web Solutions" />
+            <h1 className="max-w-5xl text-[clamp(3.5rem,8vw,8.5rem)] font-semibold leading-[0.9] tracking-[-0.05em]">
+              <span className="block text-zinc-300">
+                <WordReveal text="Engineering" />
+              </span>
+              <span className="block">
+                <WordReveal text="Scalable Systems." />
+              </span>
             </h1>
 
             <Reveal delay={0.4}>
@@ -158,19 +163,30 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-400">
             01 / About
           </p>
-          <div>
-            <h2 className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-5xl">
-              From rapid hackathon builds to{" "}
-              <span className="text-zinc-400">
-                enterprise-grade architecture.
-              </span>
-            </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-500">
-              I enjoy the rush of making an idea real, but my work at Armada
-              taught me to make it last. There, I moved from shipping fast
-              prototypes to designing distributed databases, polyglot
-              microservices, and cloud networks built for the long run.
-            </p>
+          <div className="flex flex-col gap-16 lg:flex-row lg:items-center">
+            <div className="flex-1">
+              <h2 className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-5xl">
+                From rapid hackathon builds to{" "}
+                <span className="text-zinc-400">
+                  enterprise-grade architecture.
+                </span>
+              </h2>
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-500">
+                I enjoy the rush of making an idea real, but my work at Armada
+                taught me to make it last. There, I moved from shipping fast
+                prototypes to designing distributed databases, polyglot
+                microservices, and cloud networks built for the long run.
+              </p>
+            </div>
+            
+            <div className="relative aspect-square w-full max-w-xs shrink-0 overflow-hidden rounded-2xl bg-zinc-100 lg:max-w-sm">
+              {/* NOTE: Make sure you add profile.jpg to your /public folder! */}
+              <img
+                src="/profile.jpg"
+                alt="Akshay Joseph"
+                className="retro-photo h-full w-full object-cover grayscale transition-all duration-700 hover:scale-105 hover:grayscale-0"
+              />
+            </div>
           </div>
         </Reveal>
 
@@ -183,7 +199,7 @@ export default function Home() {
                 className="mx-8 text-2xl font-medium tracking-tight text-zinc-300 sm:text-4xl"
               >
                 {item}{" "}
-                <span className="ml-8 text-zinc-200">✳</span>
+                <span className="ml-8 text-zinc-200">✦</span>
               </span>
             ))}
           </div>
@@ -277,10 +293,10 @@ export default function Home() {
               Let&apos;s build what&apos;s next.
             </h2>
             <MotionLink
-              href="mailto:hello@akshayjoseph.dev"
+              href="mailto:akshayjoseph003@gmail.com"
               className="mt-12 inline-block border-b border-white pb-2 text-lg"
             >
-              hello@akshayjoseph.dev ↗
+              akshayjoseph003@gmail.com ↗
             </MotionLink>
           </Reveal>
           <div className="mt-28 flex justify-between border-t border-zinc-800 pt-6 text-xs text-zinc-600">
