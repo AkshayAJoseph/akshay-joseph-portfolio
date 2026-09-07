@@ -183,12 +183,14 @@ export default function Home() {
                 enterprise-grade architecture.
               </span>
             </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-500 lg:text-xl lg:leading-9">
-              I enjoy the rush of making an idea real, but my work at Armada
-              taught me to make it last. There, I moved from shipping fast
-              prototypes to designing distributed databases, polyglot
-              microservices, and cloud networks built for the long run.
-            </p>
+            <div className="mt-8 flex max-w-2xl flex-col gap-6 text-lg leading-8 text-zinc-500 lg:text-xl lg:leading-9">
+              <p>
+                I am an AI and Full-Stack Developer who loves the rush of bringing ideas to life. While hackathons taught me how to move fast and prototype, my industrial experience taught me how to build for the long term.
+              </p>
+              <p>
+                Today, my focus lies at the intersection of deep technical architecture and minimalist design. Whether I am engineering distributed microservices or crafting highly interactive, pixel-perfect interfaces, I believe in building systems that stay calm under pressure and invite people in.
+              </p>
+            </div>
           </div>
         </Reveal>
 
@@ -294,12 +296,32 @@ export default function Home() {
             <h2 className="max-w-3xl text-5xl font-medium tracking-[-0.06em] sm:text-7xl">
               Let&apos;s build what&apos;s next.
             </h2>
-            <MotionLink
-              href="mailto:akshayjoseph003@gmail.com"
-              className="mt-12 inline-block border-b border-white pb-2 text-lg"
-            >
-              akshayjoseph003@gmail.com ↗
-            </MotionLink>
+            <div className="mt-12 flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
+              <MotionLink
+                href="mailto:akshayjoseph003@gmail.com"
+                className="inline-block border-b border-white pb-2 text-lg"
+              >
+                akshayjoseph003@gmail.com ↗
+              </MotionLink>
+              <div className="flex items-center gap-6 text-sm text-zinc-400">
+                <MotionLink
+                  href="https://github.com/YOUR_USERNAME"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  GitHub ↗
+                </MotionLink>
+                <MotionLink
+                  href="https://linkedin.com/in/YOUR_USERNAME"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  LinkedIn ↗
+                </MotionLink>
+              </div>
+            </div>
           </Reveal>
           <div className="mt-28 flex justify-between border-t border-zinc-800 pt-6 text-xs text-zinc-600">
             <span>© 2026 Akshay Joseph</span>
