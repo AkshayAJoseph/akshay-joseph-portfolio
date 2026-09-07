@@ -156,17 +156,20 @@ export function MotionLink({
   href,
   children,
   className = "",
-  ...props
+  target,
+  rel
 }: {
   href: string;
   children: React.ReactNode;
   className?: string;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  target?: string;
+  rel?: string;
+}) {
   const isRetroMode = useThemeStore((state) => state.isRetroMode);
 
   if (isRetroMode) {
     return (
-      <a href={href} className={className} {...props}>
+      <a href={href} className={className} target={target} rel={rel}>
         {children}
       </a>
     );
@@ -176,10 +179,11 @@ export function MotionLink({
     <motion.a
       href={href}
       className={className}
+      target={target}
+      rel={rel}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
       transition={spring}
-      {...props}
     >
       {children}
     </motion.a>
