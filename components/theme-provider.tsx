@@ -59,3 +59,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     </>
   );
 }
+
+export function RetroToggleButton() {
+  const isRetroMode = useThemeStore((state) => state.isRetroMode);
+
+  return (
+    <button
+      onClick={() => window.dispatchEvent(new KeyboardEvent("keydown", { key: "~" }))}
+      className="text-right text-xs text-zinc-600 transition-colors hover:text-white sm:text-left"
+    >
+      {isRetroMode ? "Turn off retro mode" : "Press ~ (or tap here) for a surprise"}
+    </button>
+  );
+}

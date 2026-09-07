@@ -6,6 +6,7 @@ import {
   FloatingOrb
 } from "../components/motion";
 import { WorkSection } from "../components/work-section";
+import { RetroToggleButton } from "../components/theme-provider";
 
 /* ═══════════════════════════ DATA ═══════════════════════════ */
 
@@ -17,7 +18,7 @@ const experience = [
     role: "Technical Intern @ Armada",
     description:
       "Distributed databases, polyglot microservices, and cloud networking for systems that operate at scale.",
-    period: "2024 — Present"
+    period: "June 26' — August 26'"
   }
 ];
 
@@ -101,18 +102,18 @@ export default function Home() {
       </nav>
 
       {/* ─────────────────────── HERO ────────────────────── */}
-      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-32 lg:px-10">
+      <section className="relative flex min-h-[90vh] items-center overflow-hidden px-6 pb-20 pt-24 sm:min-h-screen lg:px-10 lg:pt-32">
         <div className="retro-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" />
         <FloatingOrb />
         <div className="mx-auto w-full max-w-7xl relative z-10">
           <Parallax className="max-w-5xl">
             <Reveal>
-              <p className="mb-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
+              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500 sm:mb-8">
                 Akshay Joseph
               </p>
             </Reveal>
 
-            <h1 className="max-w-5xl text-[clamp(3.5rem,8vw,8.5rem)] font-semibold leading-[0.9] tracking-[-0.05em]">
+            <h1 className="max-w-5xl text-[clamp(2.75rem,10vw,8.5rem)] font-semibold leading-[0.9] tracking-[-0.05em] sm:text-[clamp(3.5rem,8vw,8.5rem)]">
               <span className="block text-zinc-300">
                 <WordReveal text="Engineering" />
               </span>
@@ -157,7 +158,7 @@ export default function Home() {
       {/* ─────────────────────── ABOUT ───────────────────── */}
       <section
         id="about"
-        className="border-t border-zinc-200 px-6 py-28 lg:px-10 lg:py-40"
+        className="border-t border-zinc-200 px-6 py-16 sm:py-24 lg:px-10 lg:py-40"
       >
         <Reveal className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="flex flex-col gap-12 lg:pr-10">
@@ -165,7 +166,6 @@ export default function Home() {
               01 / About
             </p>
             <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-zinc-100">
-              {/* NOTE: Make sure you add profile.jpg to your /public folder! */}
               <img
                 src="/profile.jpg"
                 alt="Akshay Joseph"
@@ -212,7 +212,7 @@ export default function Home() {
       {/* ──────────────────── EXPERIENCE ─────────────────── */}
       <section
         id="experience"
-        className="px-6 py-28 lg:px-10 lg:py-40"
+        className="px-6 py-16 sm:py-24 lg:px-10 lg:py-40"
       >
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.7fr_1.3fr]">
           <Reveal>
@@ -248,7 +248,7 @@ export default function Home() {
       {/* ─────────────────── ACHIEVEMENTS ────────────────── */}
       <section
         id="achievements"
-        className="border-t border-zinc-200 bg-zinc-100 px-6 py-28 lg:px-10 lg:py-40"
+        className="border-t border-zinc-200 bg-zinc-100 px-6 py-16 sm:py-24 lg:px-10 lg:py-40"
       >
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.7fr_1.3fr]">
           <Reveal>
@@ -301,7 +301,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-28 flex justify-between border-t border-zinc-800 pt-6 text-xs text-zinc-600">
             <span>© 2026 Akshay Joseph</span>
-            <span>Press ~ for a surprise</span>
+            <RetroToggleButton />
           </div>
         </div>
       </footer>
