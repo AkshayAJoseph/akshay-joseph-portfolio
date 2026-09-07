@@ -155,17 +155,18 @@ export function StaggerItem({
 export function MotionLink({
   href,
   children,
-  className = ""
+  className = "",
+  ...props
 }: {
   href: string;
   children: React.ReactNode;
   className?: string;
-}) {
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const isRetroMode = useThemeStore((state) => state.isRetroMode);
 
   if (isRetroMode) {
     return (
-      <a href={href} className={className}>
+      <a href={href} className={className} {...props}>
         {children}
       </a>
     );
@@ -178,6 +179,7 @@ export function MotionLink({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
       transition={spring}
+      {...props}
     >
       {children}
     </motion.a>
