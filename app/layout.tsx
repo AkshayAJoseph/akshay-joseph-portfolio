@@ -17,9 +17,9 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Akshay Joseph — AI & Full-Stack Developer",
+  title: "Akshay Joseph | AI & Full-Stack Engineer",
   description:
-    "Akshay Joseph's portfolio: scalable web solutions, thoughtful systems, and joyful interfaces."
+    "Portfolio of Akshay Joseph. Architecting scalable web solutions and building aesthetic interfaces."
 };
 
 export default function RootLayout({
