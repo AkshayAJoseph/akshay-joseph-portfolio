@@ -102,7 +102,7 @@ export default function Home() {
       </nav>
 
       {/* ─────────────────────── HERO ────────────────────── */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden px-6 pb-20 pt-24 sm:min-h-screen lg:px-10 lg:pt-32">
+      <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden px-6 pb-16 pt-32 sm:min-h-screen sm:items-center sm:pb-20 lg:px-10 lg:pt-32">
         <div className="retro-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" />
         <FloatingOrb />
         <div className="mx-auto w-full max-w-7xl relative z-10">
@@ -123,24 +123,24 @@ export default function Home() {
             </h1>
 
             <Reveal delay={0.4}>
-              <div className="mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+              <div className="mt-10 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
                 <p className="text-lg text-zinc-500">B.Tech CSE @ Saintgits</p>
-                <div className="flex gap-3">
+                <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <MotionLink
                     href="#work"
-                    className="rounded-full bg-black px-5 py-3 text-sm font-medium text-white"
+                    className="w-full whitespace-nowrap rounded-full bg-black px-5 py-3.5 text-center text-sm font-medium text-white sm:w-auto sm:py-3"
                   >
                     View my work ↘
                   </MotionLink>
                   <MotionLink
                     href="#about"
-                    className="rounded-full border border-zinc-300 px-5 py-3 text-sm font-medium"
+                    className="w-full whitespace-nowrap rounded-full border border-zinc-300 px-5 py-3.5 text-center text-sm font-medium sm:w-auto sm:py-3"
                   >
                     More about me
                   </MotionLink>
                   <MotionLink
                     href="/resume.pdf"
-                    className="rounded-full border border-zinc-300 px-5 py-3 text-sm font-medium"
+                    className="w-full whitespace-nowrap rounded-full border border-zinc-300 px-5 py-3.5 text-center text-sm font-medium sm:w-auto sm:py-3"
                   >
                     Resume ↓
                   </MotionLink>
@@ -149,7 +149,7 @@ export default function Home() {
             </Reveal>
           </Parallax>
 
-          <p className="absolute bottom-8 left-6 text-[10px] uppercase tracking-[0.2em] text-zinc-400 lg:left-10">
+          <p className="mt-16 text-[10px] uppercase tracking-[0.2em] text-zinc-400 sm:absolute sm:bottom-8 sm:left-6 sm:mt-0 lg:left-10">
             Scroll to explore ↓
           </p>
         </div>
