@@ -159,27 +159,12 @@ export default function Home() {
         id="about"
         className="border-t border-zinc-200 px-6 py-28 lg:px-10 lg:py-40"
       >
-        <Reveal className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.7fr_1.3fr]">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-400">
-            01 / About
-          </p>
-          <div className="flex flex-col gap-16 lg:flex-row lg:items-center">
-            <div className="flex-1">
-              <h2 className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-5xl">
-                From rapid hackathon builds to{" "}
-                <span className="text-zinc-400">
-                  enterprise-grade architecture.
-                </span>
-              </h2>
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-500">
-                I enjoy the rush of making an idea real, but my work at Armada
-                taught me to make it last. There, I moved from shipping fast
-                prototypes to designing distributed databases, polyglot
-                microservices, and cloud networks built for the long run.
-              </p>
-            </div>
-            
-            <div className="relative aspect-square w-full max-w-xs shrink-0 overflow-hidden rounded-2xl bg-zinc-100 lg:max-w-sm">
+        <Reveal className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.7fr_1.3fr]">
+          <div className="flex flex-col gap-12 lg:pr-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-400">
+              01 / About
+            </p>
+            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-zinc-100">
               {/* NOTE: Make sure you add profile.jpg to your /public folder! */}
               <img
                 src="/profile.jpg"
@@ -187,6 +172,21 @@ export default function Home() {
                 className="retro-photo h-full w-full object-cover grayscale transition-all duration-700 hover:scale-105 hover:grayscale-0"
               />
             </div>
+          </div>
+          
+          <div className="flex flex-col justify-center">
+            <h2 className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+              From rapid hackathon builds to{" "}
+              <span className="text-zinc-400">
+                enterprise-grade architecture.
+              </span>
+            </h2>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-500 lg:text-xl lg:leading-9">
+              I enjoy the rush of making an idea real, but my work at Armada
+              taught me to make it last. There, I moved from shipping fast
+              prototypes to designing distributed databases, polyglot
+              microservices, and cloud networks built for the long run.
+            </p>
           </div>
         </Reveal>
 
