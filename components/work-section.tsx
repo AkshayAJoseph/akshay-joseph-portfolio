@@ -95,10 +95,14 @@ function TitleBarButton({
 
 function Win95TitleBar({
   index,
-  onClose
+  onClose,
+  onMinimize,
+  onMaximize
 }: {
   index: number;
   onClose?: () => void;
+  onMinimize?: () => void;
+  onMaximize?: () => void;
 }) {
   return (
     <div className="flex items-center justify-between border-b border-zinc-700 bg-[#000080] px-3 py-2 font-mono text-[11px] text-white">
@@ -109,8 +113,8 @@ function Win95TitleBar({
         <span>project_{String(index + 1).padStart(2, "0")}.exe</span>
       </span>
       <span className="flex gap-1">
-        <TitleBarButton symbol="─" label="Minimize" />
-        <TitleBarButton symbol="□" label="Maximize" />
+        <TitleBarButton symbol="─" label="Minimize" onClick={onMinimize} />
+        <TitleBarButton symbol="□" label="Maximize" onClick={onMaximize} />
         <TitleBarButton symbol="×" label="Close" onClick={onClose} />
       </span>
     </div>
@@ -189,6 +193,9 @@ function ExpandedWindow({
   const isRetroMode = useThemeStore((state) => state.isRetroMode);
   const stableClose = useCallback(() => onClose(), [onClose]);
 
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+
   /* Escape to close */
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -212,64 +219,80 @@ function ExpandedWindow({
 
   const windowContent = (
     <>
-      <Win95TitleBar index={index} onClose={stableClose} />
-      <div className="max-h-[70vh] overflow-y-auto p-8 font-mono">
-        <p className="mb-6 text-xs text-emerald-400">
-          C:\AKSHAY\WORK&gt; ./info{" "}
-          {project.name.toLowerCase().replaceAll(" ", "-")}
-        </p>
+      <Win95TitleBar 
+        index={index} 
+        onClose={stableClose} 
+        onMinimize={() => setIsMinimized(m => !m)}
+        onMaximize={() => setIsMaximized(m => !m)}
+      />
+      {!isMinimized && (
+        <div className={`overflow-y-auto p-8 font-mono ${isMaximized ? "flex-1" : "max-h-[70vh]"}`}>
+          <p className="mb-6 text-xs text-emerald-400">
+            C:\AKSHAY\WORK&gt; ./info{" "}
+            {project.name.toLowerCase().replaceAll(" ", "-")}
+          </p>
 
-        <h3 className="mb-1 text-2xl font-bold tracking-tight text-white">
-          {project.name}
-        </h3>
-        <div className="mb-4 h-px bg-zinc-700" />
-        <p className="mb-6 text-xs leading-6 text-amber-300">
-          {project.metric}
-        </p>
+          <h3 className="mb-1 text-2xl font-bold tracking-tight text-white">
+            {project.name}
+          </h3>
+          <div className="mb-4 h-px bg-zinc-700" />
+          <p className="mb-6 text-xs leading-6 text-amber-300">
+            {project.metric}
+          </p>
 
-        <p className="mb-8 text-sm leading-7 text-zinc-300">
-          {expanded.overview}
-        </p>
+          <p className="mb-8 text-sm leading-7 text-zinc-300">
+            {expanded.overview}
+          </p>
 
-        <p className="mb-3 text-xs font-bold uppercase tracking-wider text-emerald-400">
-          &gt; Highlights
-        </p>
-        <ul className="mb-8 space-y-2">
-          {expanded.highlights.map((h) => (
-            <li
-              key={h}
-              className="flex gap-2 text-sm leading-6 text-zinc-400"
-            >
-              <span className="shrink-0 text-zinc-600">•</span>
-              {h}
-            </li>
-          ))}
-        </ul>
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-emerald-400">
+            &gt; Highlights
+          </p>
+          <ul className="mb-8 space-y-2">
+            {expanded.highlights.map((h) => (
+              <li
+                key={h}
+                className="flex gap-2 text-sm leading-6 text-zinc-400"
+              >
+                <span className="shrink-0 text-zinc-600">•</span>
+                {h}
+              </li>
+            ))}
+          </ul>
 
-        <p className="mb-3 text-xs font-bold uppercase tracking-wider text-emerald-400">
-          &gt; Tech Stack
-        </p>
-        <p className="text-sm text-zinc-400">
-          {expanded.stack.join(" · ")}
-        </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-emerald-400">
+            &gt; Tech Stack
+          </p>
+          <p className="text-sm text-zinc-400">
+            {expanded.stack.join(" · ")}
+          </p>
 
-        <p className="mt-8 text-xs text-zinc-600">
-          status: {index === 2 ? "in-progress" : "deployed"} · press Esc or
-          click × to close
-        </p>
-      </div>
+          <p className="mt-8 text-xs text-zinc-600">
+            status: {index === 2 ? "in-progress" : "deployed"} · press Esc or
+            click × to close
+          </p>
+        </div>
+      )}
     </>
   );
+
+  const containerClasses = `fixed inset-0 z-50 flex items-center justify-center ${isMaximized ? "p-0" : "p-4 sm:p-8"} ${isMinimized ? "items-end pb-8" : ""}`;
+  const modalClasses = `relative z-10 flex flex-col overflow-hidden border border-zinc-700 bg-black text-zinc-100 transition-all duration-300 ${
+    isMaximized
+      ? "h-full w-full max-w-none shadow-none"
+      : isMinimized 
+        ? "w-full max-w-2xl h-[34px] shadow-none" 
+        : "w-full max-w-2xl shadow-[16px_16px_0_rgba(255,255,255,0.08)]"
+  }`;
 
   /* ── Retro mode: no animation ── */
   if (isRetroMode) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8">
+      <div className={containerClasses}>
         <div
           className="absolute inset-0 bg-black/70"
           onClick={stableClose}
         />
-        <div className="relative z-10 w-full max-w-2xl overflow-hidden border border-zinc-700 bg-black text-zinc-100">
+        <div className={modalClasses}>
           {windowContent}
         </div>
       </div>
@@ -278,7 +301,7 @@ function ExpandedWindow({
 
   /* ── Normal mode: animated ── */
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8">
+    <div className={containerClasses}>
       <motion.div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         initial={{ opacity: 0 }}
@@ -287,11 +310,12 @@ function ExpandedWindow({
         onClick={stableClose}
       />
       <motion.div
-        className="relative z-10 w-full max-w-2xl overflow-hidden border border-zinc-700 bg-black text-zinc-100 shadow-[16px_16px_0_rgba(255,255,255,0.08)]"
+        layout
+        className={modalClasses}
         initial={{ opacity: 0, scale: 0.92, y: 24 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 12 }}
-        transition={spring}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
         {windowContent}
       </motion.div>
