@@ -15,18 +15,63 @@ const techStack = ["React", "Node.js", "FastAPI", "MongoDB", "Go", "Python"];
 
 const experience = [
   {
-    role: "Technical Intern @ Armada",
+    role: "Technical Intern - Armada India",
     description:
       "Distributed databases, polyglot microservices, and cloud networking for systems that operate at scale.",
-    period: "June 26' — August 26'"
+    period: "Jun 26' — Aug 26'"
+  },
+  {
+    role: "President - Open Source Club, Saintgits",
+    description:
+      "",
+    period: "Apr 2026 - 27'"
+  },
+  {
+    role: "Vice-President - CODE @ Saintgits",
+    description: "",
+    period: "Apr 2026 - 27'"
+  },
+  {
+    role: "Secretary - Open Source Club, Saintgits",
+    description:
+      "Organized 5+ activities engaging 50+ students in open-source contributions.",
+    period: "Apr 2025 - 26'"
+  },
+  {
+    role: "Learning Coordinator - TinkerHub Saintgits",
+    description:
+      "Led hands-on workshops, and 10+ Learning activities and hackathons to upskill students in emerging technologies.",
+    period: "Apr 2025 - 26'"
+  },
+  {
+    role: "Technical Head - ACM Saintgits",
+    description:
+      "Managed technical initiatives and conducted Ascend 26', a National-level Hackathon, boosting student participation.",
+    period: "Apr 2025 - 26'"
   }
+  
 ];
 
 const achievements = [
   {
     title: "1st Prize, Code ReCET 3.0",
-    subtitle: "National Hackathon",
-    label: "Winner"
+    subtitle: "National Hackathon, CET. Selected as Winning team from 800+ applicants and 80+ competing teams",
+    label: "March 2026"
+  },
+  {
+    title: "1st Place – Spin-Hack Hackathon", 
+    subtitle: "Conducted by IEEE Student Branch, Saintgits",
+    label: "August 2025"
+  },
+  {
+    title: "3rd Place – CTF Online Competition",
+    subtitle: "By Traboda at CareerLink, SCMS College of Engineering",
+    label: "January 2025"
+  },
+  {
+    title: "1st Prize – SUITS “The Third Act” HR Game",
+    subtitle: "By Saintgits College of Applied Sciences",
+    label: "October 2024"
   }
 ];
 
@@ -124,7 +169,7 @@ export default function Home() {
 
             <Reveal delay={0.4}>
               <div className="mt-10 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+                <p className="text-[15px] uppercase tracking-[0.2em] text-zinc-400">
                   B.Tech CSE @ Saintgits College of Engineering
                 </p>
                 <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
@@ -188,7 +233,7 @@ export default function Home() {
                 I am an AI and Full-Stack Developer who loves the rush of bringing ideas to life. While hackathons taught me how to move fast and prototype, my industrial experience taught me how to build for the long term.
               </p>
               <p>
-                Today, my focus lies at the intersection of deep technical architecture and minimalist design. Whether I am engineering distributed microservices or crafting highly interactive, pixel-perfect interfaces, I believe in building systems that stay calm under pressure and invite people in.
+                Today, my focus lies at the intersection of a clean technical architecture and minimalist design. Whether I'm building distributed microservices or interactive interfaces, I believe in building systems that stay calm under pressure and invite people in.
               </p>
             </div>
           </div>
@@ -305,7 +350,7 @@ export default function Home() {
               </MotionLink>
               <div className="flex items-center gap-6 text-sm text-zinc-400">
                 <MotionLink
-                  href="https://github.com/YOUR_USERNAME"
+                  href="https://github.com/AkshayAJoseph/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
@@ -313,7 +358,7 @@ export default function Home() {
                   GitHub ↗
                 </MotionLink>
                 <MotionLink
-                  href="https://linkedin.com/in/YOUR_USERNAME"
+                  href="https://linkedin.com/in/akshayjoseph003/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
